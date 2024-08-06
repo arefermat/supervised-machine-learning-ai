@@ -1,6 +1,9 @@
 #Basic for python and fundamentel for Machine learning algorithms
 import numpy as np
 
+#Used for random numbers like randomly splitting data set
+import random as rn
+
 #More math and open csv files and suck, also works with data frames
 import pandas as pd
 
@@ -11,19 +14,21 @@ from scikit-learn import LinearRegression
 import seaborn as sns
 
 #Class for the AI bot and all the functions that will train it and stuff
-class linr_reg():
+class simple_linr_reg():
     #Initialize the class
     def __init__():
-        pass
+        np.random.seed(9923)
         
     #Class that has functions to prepare the data
     class data_prep():
         #Initalize the class using data
-        def __init__(self, data, train=0.7, val=0.15, test=0.15):
+        def __init__(self, data, train=70, val=15, test=15):
             self.data = data
             self.train = train
             self.val = val
             self.test = test
+            self.data.columns = data.columns
+            self.data.rows = data.rows
             
         #Prep the data by importing it and stuff
         def data_imprt(data=self.data):
@@ -35,11 +40,20 @@ class linr_reg():
             except:
                 print("DataFrame wasn't able to be created, make sure your data is set up right")
         #Split the data into train, validate, and testing data
-        def data_split(train=self.train, val=self.val, test=self.test)):
-            pass
+        def data_split(train=self.train, val=self.val, test=self.test, x_var, y_var, rows=self.data.rows):
+            global x_train, y_train, x_val, y_val, x_test, y_test
+            x_train, y_train, x_val, y_val, x_test, y_test = []
+            datasets = [x_train, y_train, x_val, y_val, x_test, y_test]
+            for dataset in datasets
+                for i in range((rows/100*(dataset).replace("x", "").replace("y", "").replace("_", ""))):
+                    row_nm = rn.randint(1, rows)
+                    dataset.append(rows.row_nm)
+                
             
     #Start training the AI with the data and start to validate it 
     class train():
+        def __init__():
+            pass
         #Train the AI using the training dataset
         def train_mlai():
             pass
