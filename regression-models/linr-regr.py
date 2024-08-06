@@ -44,7 +44,7 @@ class simple_linr_reg():
             global x_train, y_train, x_val, y_val, x_test, y_test
             x_train, y_train, x_val, y_val, x_test, y_test = []
             datasets = [x_train, y_train, x_val, y_val, x_test, y_test]
-            for dataset in datasets
+            for dataset in datasets:
                 for i in range((rows/100*(dataset).replace("x", "").replace("y", "").replace("_", ""))):
                     row_nm = rn.randint(1, rows)
                     dataset.append(rows.row_nm)
