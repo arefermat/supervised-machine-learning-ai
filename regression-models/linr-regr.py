@@ -34,20 +34,34 @@ class simple_linr_reg():
         def data_imprt(data=self.data):
             global df
             try:
-                df = pd.DataFrame(data, columns=data.columns)
+                df = pd.read_csv(data)
                 print("Data : ")
                 print(df).to_string()
             except:
                 print("DataFrame wasn't able to be created, make sure your data is set up right")
         #Split the data into train, validate, and testing data
-        def data_split(train=self.train, val=self.val, test=self.test, x_var, y_var, rows=self.data.rows):
+        def data_split(train=self.train, val=self.val, test=self.test, x_var, y_var, rows=len(self.data)):
             global x_train, y_train, x_val, y_val, x_test, y_test
             x_train, y_train, x_val, y_val, x_test, y_test = []
             datasets = [x_train, y_train, x_val, y_val, x_test, y_test]
+            
+            
             for dataset in datasets:
-                for i in range((rows/100*(dataset).replace("x", "").replace("y", "").replace("_", ""))):
+                #test which dataset it is and mulitply that so we know how many times to pick a row
+                if dataset == x_train or y_train:
+                    set_range = train
+                elif dataset == x_val or y_val:
+                    set_range = val
+                elif dataset == x_test or y_test:
+                    set_range = test
+                    
+                #for loop to loop thorugh the datasets 
+                for i in range((rows/100*set_range):
+                    #get random numbwr for the row
                     row_nm = rn.randint(1, rows)
-                    dataset.append(rows.row_nm)
+                    dataset.append(row_nm)
+                
+                
                 
             
     #Start training the AI with the data and start to validate it 
