@@ -27,9 +27,13 @@ class linr_reg():
             
         #Prep the data by importing it and stuff
         def data_imprt(data=self.data):
-            df = pd.DataFrame(data, columns=data.columns)
-            print("Data : ")
-            print(df).to_string()
+            global df
+            try:
+                df = pd.DataFrame(data, columns=data.columns)
+                print("Data : ")
+                print(df).to_string()
+            except:
+                print("DataFrame wasn't able to be created, make sure your data is set up right")
         #Split the data into train, validate, and testing data
         def data_split(train=self.train, val=self.val, test=self.test)):
             pass
