@@ -18,11 +18,20 @@ class linr_reg():
         
     #Class that has functions to prepare the data
     class data_prep():
+        #Initalize the class using data
+        def __init__(self, data, train=0.7, val=0.15, test=0.15):
+            self.data = data
+            self.train = train
+            self.val = val
+            self.test = test
+            
         #Prep the data by importing it and stuff
-        def data_imprt():
-            pass
+        def data_imprt(data=self.data):
+            df = pd.DataFrame(data, columns=data.columns)
+            print("Data : ")
+            print(df).to_string()
         #Split the data into train, validate, and testing data
-        def data_split():
+        def data_split(train=self.train, val=self.val, test=self.test)):
             pass
             
     #Start training the AI with the data and start to validate it 
