@@ -104,8 +104,13 @@ class simple_linr_reg():
         def __init__():
             self.parameters = {}
         #Train the AI using the training dataset
-        def train_mlai():
-            pass
+        class train_func():
+            def __init__():
+                pass
+            def back_propg():
+                pass
+            def fwd_propg():
+                pass
         #Validate the AI and tweak andything if its getting stuff wrong
         def validate_data():
             pass
