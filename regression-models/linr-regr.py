@@ -14,7 +14,7 @@ from scikit-learn import LinearRegression
 import seaborn as sns
 
 #Class for the AI bot and all the functions that will train it and stuff
-class simple_linr_reg():
+class simple_linr_regr():
     #Initialize the class
     def __init__():
         np.random.seed(9923)
@@ -102,25 +102,66 @@ class simple_linr_reg():
             self.parameters = {}
             self.loss = []
             
-        def cost_func():
-            pass
-            
-        #Train the AI using the training dataset
-        class train_func():
-            
-            def __init__():
-                pass
+        def cost_func(self, predictions, y_train):
+            #Get the MSE of the output
+            cost = np.mean((y_train - predictions) ** 2) 
+            return cost 
                 
-            def back_propg():
-                pass
+        def fwd_propg(self, x_train):
+            m = self.parameters['m'] 
+            c = self.parameters['c'] 
                 
-            def fwd_propg():
-                pass
+            predictions = np.multiply(m, x_train) + c 
+            return predictions
+                
+        def back_propg(self, x_train, y_train, predictions):
+            derivatives = {}
+            df = (predictions - y_train)
+                
+            dm = 2 * np.mean(np.multiply(x_train, df))
+                
+            dc = 2 * np.mean(df)
+                
+            derivatives["dm"] = dm
+            derivatives["dc"] = dc
+                
+            return derivatives
+                
                 
         #Test the ai with the testing data set 
-        def update_perms():
-            pass
+        def update_perams(self, derivatives, learning_rate):
+            self.parameters["m"] = self.parameters["m"] - learning_rate * derivatives["dm"]
+            self.parameters["c"] = self.parameters["c"] - learning_rate * derivatives["dc"]
             
         #Final function so that you can give it data and some other things to do everything in one function, preditcs what will happen
-        def train():
-            pass
+        def train(self, x_train, y_train, learning_rate, iters):
+            
+            self.parameters["m"] = np.random.uniform(0, 1) * -1
+            self.parameters["c"] = np.random.uniform(0, 1) * -1
+            
+            for i in range(iters):
+                predictions = self.fwd_propg(x_train)
+                
+                cost = self.cost_func(predictions, y_train)
+                
+                derivatives = self.back_propg(x_train, y_train, predictions)
+                
+                self.update_perams(derivatives, learning_rate)
+                
+                self.loss.append(cost)
+                print(f"Iteration = {i + 1}, Loss = {cost}")
+                
+                return self.parameters, self.loss
+                
+                
+if __name__ == "__main__":
+    
+    model = simple_linr_regr()
+    lern_rt = int(input("Learning rate : "))
+    itrs = int(input("Iterations : "))
+    parameters, loss = model.train(x_train, y_train, learning_rate=lern_rt, iters=itrs)
+    
+    print("Trained parameters :", paramters)
+    print("Final loss :", loss[-1])
+                
+                
