@@ -58,29 +58,34 @@ class simple_linr_reg():
                     set_range = test
                 dataset = []
                 #for loop to loop thorugh the datasets 
-                for i in range((rows/100*set_range):
+                for i in range((rows/100*set_range)):
                     #get random number for the row
                     row_nm = rn.randint(1, rows)
-                    dataset.append(row_nm, "/n")
+                    for datas in dataset:
+                        if row_nm == datas:
+                            pass
+                        else:
+                            dataset.append(row_nm)
+                    
             for dataset in datasets:
                 if dataset == xtest:
-                    for data in dataset:
-                        a = np.append(x_test, [data])
+                    for datas in dataset:
+                        a = np.append(x_test, [data.values[datas][x_var]])
                         x_test = a
                     x_test.reshape(-1, 1)
                 elif dataset == ytest:
-                    for data in dataset:
-                        a = np.append(y_test, [data])
+                    for datas in dataset:
+                        a = np.append(y_test, [data.values[datas][y_var]])
                         y_test = a
                     y_test.reshape(-1, 1)
                 elif dataset == xtrain:
-                    for data in dataset:
-                        a = np.append(x_train, [data])
+                    for datas in dataset:
+                        a = np.append(x_train, [data.values[datas][x_var]])
                         x_train = a
                     x_train.reshape(-1, 1)
                 elif dataset == ytrain:
-                    for data in dataset:
-                        a = np.append(y_train, [data])
+                    for datas in dataset:
+                        a = np.append(y_train, [data.values[datas][y_var]])
                         y_train = a
                     y_train.reshape(-1, 1)
                     
