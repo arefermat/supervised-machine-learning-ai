@@ -96,16 +96,24 @@ class simple_linr_reg():
             
     #Start training the AI with the data and start to validate it 
     class train():
-        
         data = data.dropna()
+        
         def __init__():
             self.parameters = {}
+            self.loss = []
+            
+        def cost_func():
+            pass
+            
         #Train the AI using the training dataset
         class train_func():
+            
             def __init__():
                 pass
+                
             def back_propg():
                 pass
+                
             def fwd_propg():
                 pass
                 
