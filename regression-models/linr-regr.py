@@ -22,10 +22,9 @@ class simple_linr_reg():
     #Class that has functions to prepare the data
     class data_prep():
         #Initalize the class using data
-        def __init__(self, data, train=70, val=15, test=15):
+        def __init__(self, data, train=70, test=15):
             self.data = data
             self.train = train
-            self.val = val
             self.test = test
             self.data.columns = data.columns
             self.data.rows = data.rows
@@ -40,22 +39,52 @@ class simple_linr_reg():
             except:
                 print("DataFrame wasn't able to be created, make sure your data is set up right")
         #Split the data into train, validate, and testing data
-        def data_split(train=self.train, val=self.val, test=self.test, x_var, y_var, rows=len(self.data), data=self.data):
+        def data_split(train=self.train, test=self.test, x_var, y_var, rows=len(self.data), data=self.data):
             global x_train, y_train, x_test, y_test
-            x_train = np.array(data.x_var[0:500])
-            y_train = np.array(data.y_var[0:500])
-            datasets = [x_train, y_train, x_test, y_test]
+            x_train = np.array()
+            y_train = np.array()
+            x_test = np.array()
+            y_test = np.array()
+            xtest = ["test"]
+            ytest = ["test"]
+            xtrain = ["train"]
+            ytrain = ["train"]
+            datasets = [xtrain, ytrain, xtest, ytest]
             for dataset in datasets:
                 #test which dataset it is and mulitply that so we know how many times to pick a row
-                if dataset == x_train or y_train:
+                if dataset == "train":
                     set_range = train
-                elif dataset == x_test or y_test:
+                elif dataset == "test":
                     set_range = test
+                dataset = []
                 #for loop to loop thorugh the datasets 
                 for i in range((rows/100*set_range):
                     #get random number for the row
                     row_nm = rn.randint(1, rows)
-                    dataset.append(row_nm)
+                    dataset.append(row_nm, "/n")
+            for dataset in datasets:
+                if dataset == xtest:
+                    for data in dataset:
+                        a = np.append(x_test, [data])
+                        x_test = a
+                    x_test.reshape(-1, 1)
+                elif dataset == ytest:
+                    for data in dataset:
+                        a = np.append(y_test, [data])
+                        y_test = a
+                    y_test.reshape(-1, 1)
+                elif dataset == xtrain:
+                    for data in dataset:
+                        a = np.append(x_train, [data])
+                        x_train = a
+                    x_train.reshape(-1, 1)
+                elif dataset == ytrain:
+                    for data in dataset:
+                        a = np.append(y_train, [data])
+                        y_train = a
+                    y_train.reshape(-1, 1)
+                    
+                
                 
                 
                 
