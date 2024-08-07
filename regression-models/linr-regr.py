@@ -40,9 +40,10 @@ class simple_linr_reg():
             except:
                 print("DataFrame wasn't able to be created, make sure your data is set up right")
         #Split the data into train, validate, and testing data
-        def data_split(train=self.train, val=self.val, test=self.test, x_var, y_var, rows=len(self.data)):
+        def data_split(train=self.train, val=self.val, test=self.test, x_var, y_var, rows=len(self.data), data=self.data):
             global x_train, y_train, x_test, y_test
-            x_train, y_train, x_test, y_test = []
+            x_train = np.array(data.x_var[0:500])
+            y_train = np.array(data.y_var[0:500])
             datasets = [x_train, y_train, x_test, y_test]
             for dataset in datasets:
                 #test which dataset it is and mulitply that so we know how many times to pick a row
