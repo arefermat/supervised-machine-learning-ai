@@ -1,4 +1,4 @@
-#Basic for python and fundamentel for Machine learning algorithms
+o#Basic for python and fundamentel for Machine learning algorithms
 import numpy as np
 
 #Used for random numbers like randomly splitting data set
@@ -98,9 +98,6 @@ class simple_linr_reg():
     class train():
         
         data = data.dropna()
-        
-        
-        
         def __init__():
             self.parameters = {}
         #Train the AI using the training dataset
@@ -111,13 +108,11 @@ class simple_linr_reg():
                 pass
             def fwd_propg():
                 pass
-        #Validate the AI and tweak andything if its getting stuff wrong
-        def validate_data():
-            pass
+                
         #Test the ai with the testing data set 
-        def test_data():
+        def update_perms():
             pass
             
-    #Final function so that you can give it data and some other things to do everything in one function, preditcs what will happen
-    def predict():
-        pass
+        #Final function so that you can give it data and some other things to do everything in one function, preditcs what will happen
+        def train():
+            pass
