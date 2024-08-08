@@ -47,13 +47,20 @@ class log_regr():
         return weights
     
     # Save model
-    def save_model(weights, file_name='logistic_regression_weights.npy'):
-        np.save(file_name, weights)
-        print(f'Weights saved to {file_name}')
-    
+    def save_model(weights, file_name='logistic_regression_weights.txt', ai_num):
+        ai_num = input("What do you want your unique AI number to be? ")
+        with open(file_name, "w") as file:
+            file.write(ai_num, ":", weights, "/n")
+            print(f'Weights saved to {file_name} with number {ai_num}')
+            
     # Load model
-    def load_model(file_name='logistic_regression_weights.npy'):
-        return np.load(file_name)
+    def load_model(file_name='logistic_regression_weights.npy', ai_num):
+        with open(file_name, "r") as f:
+            for line in f:
+                if ai_num in line:
+                    return int(line.replace(ai_num, "").replace(" : ", ""))
+                else: 
+                    pass
 
 # Example usage
 if __name__ == '__main__':
